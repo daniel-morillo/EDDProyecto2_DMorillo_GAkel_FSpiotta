@@ -99,7 +99,7 @@ public class HashTable<T> {
             while(aux != null) {
                 Nodo<String> aux2 = aux.getElemento().getAutores().getpFirst();
                 for (int i = 0; i < aux.getElemento().getAutores().getSize(); i++) {
-                    if (aux2.getElemento().equalsIgnoreCase(key)) {
+                    if (aux2.getElemento().trim().equalsIgnoreCase(key)) {
                         newList.AppendAtTheEnd(aux.getElemento());
                     }
                     aux2 = aux2.getpNext();
@@ -119,7 +119,7 @@ public class HashTable<T> {
             while(aux != null) {
                 Nodo<String> aux2 = aux.getElemento().getKeyWords().getpFirst();
                 for (int i = 0; i < aux.getElemento().getKeyWords().getSize(); i++) {
-                    if (aux2.getElemento().equalsIgnoreCase(key)) {
+                    if (aux2.getElemento().trim().equalsIgnoreCase(key)) {
                         newList.AppendAtTheEnd(aux.getElemento());
                     }
                     aux2 = aux2.getpNext();

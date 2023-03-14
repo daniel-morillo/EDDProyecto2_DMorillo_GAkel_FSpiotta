@@ -56,7 +56,9 @@ public class Main {
         if (encontrado == false) {
             autoresHashTable.insertar(nombreAutor, newSummary);
         } else {
-            listaAux.AppendAtTheEnd(newSummary);
+            if (listaAux.existeEnLaLista(newSummary) == false) {
+                listaAux.AppendAtTheEnd(newSummary);
+            }
         }
     }
     
@@ -71,7 +73,9 @@ public class Main {
         if (encontrado == false) {
             palabrasClaveHashTable.insertar(palabraCalve, newSummary);
         } else {
-            listaAux.AppendAtTheEnd(newSummary);
+            if (listaAux.existeEnLaLista(newSummary) == false) {
+                listaAux.AppendAtTheEnd(newSummary);
+            }
         }
     }
     
@@ -104,6 +108,9 @@ public class Main {
                             String [] textoSeparadoAutores = textoSeparadoGrande[i].split("Autores\n");
                             String [] nombreArticuloArray = textoSeparadoAutores[0].split("\n");
                             String nombreArticulo = nombreArticuloArray[0];
+                            if (!nombreArticulo.contains(".")) {
+                                nombreArticulo += ".";
+                            }
                             String [] textoSeparadoResumen = textoSeparadoAutores[1].split("Resumen\n");
                             String [] autoresArray = textoSeparadoResumen[0].split("\n");
                             Lista autoresList = new Lista();

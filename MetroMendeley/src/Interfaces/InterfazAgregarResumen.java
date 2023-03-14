@@ -119,6 +119,9 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
                         String [] textoSeparadoAutores = texto.split("Autores\n");
                         String [] nombreArticuloArray = textoSeparadoAutores[0].split("\n");
                         String nombreArticulo = nombreArticuloArray[0];
+                        if (!nombreArticulo.contains(".")) {
+                            nombreArticulo += ".";
+                        }
                         String [] textoSeparadoResumen = textoSeparadoAutores[1].split("Resumen\n");
                         String [] autoresArray = textoSeparadoResumen[0].split("\n");
                         Lista autoresList = new Lista();
