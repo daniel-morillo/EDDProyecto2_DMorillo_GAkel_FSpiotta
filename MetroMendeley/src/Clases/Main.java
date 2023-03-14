@@ -155,6 +155,5 @@ public class Main {
         leerTxtGuardado(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
         InterfazInicial main = new InterfazInicial(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
         main.show();
-        System.out.println("hola");
     }
 }
