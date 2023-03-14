@@ -211,6 +211,18 @@ public class Lista<T> {
         }
     }
     
+    public boolean existeEnLaLista(Summary resumen) {
+        boolean encontrado = false;
+        Nodo<Summary> aux = this.getpFirst();
+        for (int i = 0; i < this.getSize(); i++) {
+            if (aux.getElemento().getTitulo().equalsIgnoreCase(resumen.getTitulo())) {
+                encontrado = true;
+            }
+            aux = aux.getpNext();
+        }
+        return encontrado;
+    }
+    
         
     /**
      * Obtiene el primer nodo de la lista

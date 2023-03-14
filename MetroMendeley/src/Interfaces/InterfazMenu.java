@@ -172,6 +172,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private void SalirDelSistemaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirDelSistemaButtonActionPerformed
         // TODO add your handling code here:
         this.escribir_txt();
+        System.exit(0);
     }//GEN-LAST:event_SalirDelSistemaButtonActionPerformed
 
     /**
