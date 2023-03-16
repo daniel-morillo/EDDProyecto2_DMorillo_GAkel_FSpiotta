@@ -8,6 +8,8 @@ import Clases.Summary;
 import EstructurasDeDatos.HashTable;
 import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.Nodo;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -31,6 +33,12 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public Image getIconImage(){
+        Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
+        return retvalue;
     }
     
     public int insertarSummaryHashTable(Summary newSummary, String nombreArticulo) {
@@ -183,28 +191,43 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         MenuButton = new javax.swing.JButton();
         AgregarResumenButton = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
+        MenuButton.setBackground(new java.awt.Color(0, 51, 153));
+        MenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        MenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
         MenuButton.setText("VOLVER AL MENU");
+        MenuButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 600, 220, -1));
 
+        AgregarResumenButton.setBackground(new java.awt.Color(255, 204, 153));
+        AgregarResumenButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        AgregarResumenButton.setForeground(new java.awt.Color(255, 255, 255));
+        AgregarResumenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
         AgregarResumenButton.setText("AGREGAR RESUMEN");
+        AgregarResumenButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AgregarResumenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarResumenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 280, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo agregar.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,6 +281,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarResumenButton;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton MenuButton;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

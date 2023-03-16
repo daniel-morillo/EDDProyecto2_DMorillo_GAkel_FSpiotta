@@ -8,6 +8,8 @@ import Clases.Summary;
 import EstructurasDeDatos.HashTable;
 import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.Nodo;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +30,12 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public Image getIconImage(){
+        Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
+        return retvalue;
     }
     
     public String imprimirResumen(Summary summary) {
@@ -88,68 +96,94 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         SeleccionarInvButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         MostrarAnalisisTextArea = new javax.swing.JTextArea();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
-        MenuButton.setText("VOLVER AL MENU");
+        MenuButton.setBackground(new java.awt.Color(0, 51, 153));
+        MenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, -1, -1));
+        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 630, 60, 60));
 
         VisualizarTextArea.setEditable(false);
-        VisualizarTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        VisualizarTextArea.setBackground(new java.awt.Color(0, 51, 92));
         VisualizarTextArea.setColumns(20);
-        VisualizarTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        VisualizarTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        VisualizarTextArea.setForeground(new java.awt.Color(255, 255, 255));
         VisualizarTextArea.setRows(5);
+        VisualizarTextArea.setBorder(null);
         jScrollPane1.setViewportView(VisualizarTextArea);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 470, 410));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 470, 400));
 
+        VisualizarButton.setBackground(new java.awt.Color(255, 204, 102));
+        VisualizarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        VisualizarButton.setForeground(new java.awt.Color(255, 255, 255));
         VisualizarButton.setText("VISUALIZAR INVESTIGACIONES REALIZADAS");
         VisualizarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VisualizarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(VisualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+        getContentPane().add(VisualizarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 470, 40));
 
-        SeleccionTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        SeleccionTextArea.setBackground(new java.awt.Color(255, 204, 102));
         SeleccionTextArea.setColumns(20);
-        SeleccionTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        SeleccionTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
+        SeleccionTextArea.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionTextArea.setRows(5);
         jScrollPane2.setViewportView(SeleccionTextArea);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 350, 50));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 350, 50));
 
-        jLabel1.setText("seleccionar. (Titulo completo como aparece en el registro)");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("(Titulo completo como aparece en el registro)");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
 
-        jLabel2.setText("Escriba aqui, el nombre de la investigacion que desea");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Escriba el nombre de la investigación ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
 
-        SeleccionarInvButton.setText("SELECCIONAR INVESTIGACION Y ANALIZAR");
+        SeleccionarInvButton.setBackground(new java.awt.Color(255, 204, 102));
+        SeleccionarInvButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        SeleccionarInvButton.setForeground(new java.awt.Color(255, 255, 255));
+        SeleccionarInvButton.setText("SELECCIONAR INVESTIGACIÓN Y ANALIZAR");
+        SeleccionarInvButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         SeleccionarInvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarInvButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SeleccionarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
+        getContentPane().add(SeleccionarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 350, 40));
 
         MostrarAnalisisTextArea.setEditable(false);
-        MostrarAnalisisTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        MostrarAnalisisTextArea.setBackground(new java.awt.Color(0, 51, 91));
         MostrarAnalisisTextArea.setColumns(20);
-        MostrarAnalisisTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        MostrarAnalisisTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        MostrarAnalisisTextArea.setForeground(new java.awt.Color(255, 255, 255));
         MostrarAnalisisTextArea.setRows(5);
+        MostrarAnalisisTextArea.setBorder(null);
         jScrollPane3.setViewportView(MostrarAnalisisTextArea);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 350, 320));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 350, 310));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo buscar.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,6 +311,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton MenuButton;
     private javax.swing.JTextArea MostrarAnalisisTextArea;
     private javax.swing.JTextArea SeleccionTextArea;
