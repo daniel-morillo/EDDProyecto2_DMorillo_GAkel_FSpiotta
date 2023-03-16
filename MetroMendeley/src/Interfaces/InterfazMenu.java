@@ -8,6 +8,8 @@ import Clases.Summary;
 import EstructurasDeDatos.HashTable;
 import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.Nodo;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
@@ -28,6 +30,11 @@ public class InterfazMenu extends javax.swing.JFrame {
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    public Image getIconImage(){
+        Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
+        return retvalue;
     }
     public String imprimirResumen(Summary summary) {
         String cadena = "";
@@ -91,52 +98,82 @@ public class InterfazMenu extends javax.swing.JFrame {
         BuscarPalabraClaveButton = new javax.swing.JButton();
         BuscarPorAutorButton = new javax.swing.JButton();
         SalirDelSistemaButton = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
+        AgregarResumenButton.setBackground(new java.awt.Color(255, 204, 153));
+        AgregarResumenButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        AgregarResumenButton.setForeground(new java.awt.Color(255, 255, 255));
+        AgregarResumenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
         AgregarResumenButton.setText("AGREGAR RESUMEN");
+        AgregarResumenButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AgregarResumenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarResumenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 470, 100));
 
+        AnalizarResumenButton.setBackground(new java.awt.Color(255, 204, 102));
+        AnalizarResumenButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        AnalizarResumenButton.setForeground(new java.awt.Color(255, 255, 255));
+        AnalizarResumenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
         AnalizarResumenButton.setText("ANALIZAR RESUMEN");
+        AnalizarResumenButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AnalizarResumenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AnalizarResumenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AnalizarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        getContentPane().add(AnalizarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 470, 100));
 
-        BuscarPalabraClaveButton.setText("BUSCAR INVESTIGACIONES POR PALABRA CLAVE");
+        BuscarPalabraClaveButton.setBackground(new java.awt.Color(102, 153, 255));
+        BuscarPalabraClaveButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        BuscarPalabraClaveButton.setForeground(new java.awt.Color(255, 255, 255));
+        BuscarPalabraClaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
+        BuscarPalabraClaveButton.setText("BUSCAR POR PALABRA CLAVE");
+        BuscarPalabraClaveButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BuscarPalabraClaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarPalabraClaveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPalabraClaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        getContentPane().add(BuscarPalabraClaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 470, 100));
 
-        BuscarPorAutorButton.setText("BUSCAR INVESTIGACIONES POR AUTOR");
+        BuscarPorAutorButton.setBackground(new java.awt.Color(255, 153, 102));
+        BuscarPorAutorButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        BuscarPorAutorButton.setForeground(new java.awt.Color(255, 255, 255));
+        BuscarPorAutorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
+        BuscarPorAutorButton.setText("BUSCAR POR AUTOR");
+        BuscarPorAutorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BuscarPorAutorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarPorAutorButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPorAutorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        getContentPane().add(BuscarPorAutorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 470, 100));
 
+        SalirDelSistemaButton.setBackground(new java.awt.Color(0, 51, 153));
+        SalirDelSistemaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        SalirDelSistemaButton.setForeground(new java.awt.Color(255, 255, 255));
+        SalirDelSistemaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
         SalirDelSistemaButton.setText("SALIR DEL SISTEMA");
+        SalirDelSistemaButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         SalirDelSistemaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirDelSistemaButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SalirDelSistemaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        getContentPane().add(SalirDelSistemaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 540, 470, 90));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo Menu.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,6 +252,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JButton AnalizarResumenButton;
     private javax.swing.JButton BuscarPalabraClaveButton;
     private javax.swing.JButton BuscarPorAutorButton;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton SalirDelSistemaButton;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

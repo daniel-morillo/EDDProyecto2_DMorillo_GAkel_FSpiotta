@@ -8,6 +8,8 @@ import Clases.Summary;
 import EstructurasDeDatos.HashTable;
 import EstructurasDeDatos.Lista;
 import EstructurasDeDatos.Nodo;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,12 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public Image getIconImage(){
+        Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
+        return retvalue;
     }
     
     public String imprimirResumen(Summary summary) {
@@ -76,82 +84,114 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         BuscarInvButton = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         MostrarInvRelacionadasTextArea = new javax.swing.JTextArea();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
-        MenuButton.setText("VOLVER AL MENU");
+        MenuButton.setBackground(new java.awt.Color(0, 51, 153));
+        MenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
+        MenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, -1, -1));
+        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 630, 60, 60));
 
-        jLabel1.setText("Escriba a continuacion una palabra clave para buscar ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Escriba una palabra clave para buscar ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
 
-        jLabel2.setText("las investigaciones relacionadas con el mismo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("las investigaciones relacionadas");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
 
-        SeleccionTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        SeleccionTextArea.setBackground(new java.awt.Color(102, 153, 255));
         SeleccionTextArea.setColumns(20);
-        SeleccionTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        SeleccionTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
+        SeleccionTextArea.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionTextArea.setRows(5);
         jScrollPane3.setViewportView(SeleccionTextArea);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 350, 50));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 350, 50));
 
-        jLabel3.setText("detalles. (Titulo completo como aparece en el registro)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("(Titulo completo como aparece en el registro)");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
 
-        jLabel4.setText("Escriba aqui, el nombre de la investigacion que desea ver");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Escriba el nombre de la investigacion que desea ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, -1, -1));
 
-        VerDetallesButton.setText("SELECCIONAR INVESTIGACION Y VER DETALLES");
+        VerDetallesButton.setBackground(new java.awt.Color(102, 153, 255));
+        VerDetallesButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        VerDetallesButton.setForeground(new java.awt.Color(255, 255, 255));
+        VerDetallesButton.setText("SELECCIONAR INVESTIGACIÓN Y VER DETALLES");
         VerDetallesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VerDetallesButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(VerDetallesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
+        getContentPane().add(VerDetallesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
 
         MostrarAnalisisTextArea.setEditable(false);
-        MostrarAnalisisTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        MostrarAnalisisTextArea.setBackground(new java.awt.Color(0, 51, 91));
         MostrarAnalisisTextArea.setColumns(20);
-        MostrarAnalisisTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        MostrarAnalisisTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        MostrarAnalisisTextArea.setForeground(new java.awt.Color(255, 255, 255));
         MostrarAnalisisTextArea.setRows(5);
         jScrollPane4.setViewportView(MostrarAnalisisTextArea);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 350, 320));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 350, 320));
 
-        SelectWordTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        SelectWordTextArea.setBackground(new java.awt.Color(102, 153, 255));
         SelectWordTextArea.setColumns(20);
-        SelectWordTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        SelectWordTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
+        SelectWordTextArea.setForeground(new java.awt.Color(255, 255, 255));
         SelectWordTextArea.setRows(5);
         jScrollPane5.setViewportView(SelectWordTextArea);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 350, 50));
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 350, 50));
 
-        BuscarInvButton.setText("BUSCAR INVESTGACIONES RELACIONADAS");
+        BuscarInvButton.setBackground(new java.awt.Color(102, 153, 255));
+        BuscarInvButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        BuscarInvButton.setForeground(new java.awt.Color(255, 255, 255));
+        BuscarInvButton.setText("BUSCAR INVESTIGACIONES RELACIONADAS");
         BuscarInvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarInvButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+        getContentPane().add(BuscarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         MostrarInvRelacionadasTextArea.setEditable(false);
-        MostrarInvRelacionadasTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        MostrarInvRelacionadasTextArea.setBackground(new java.awt.Color(0, 51, 91));
         MostrarInvRelacionadasTextArea.setColumns(20);
-        MostrarInvRelacionadasTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        MostrarInvRelacionadasTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        MostrarInvRelacionadasTextArea.setForeground(new java.awt.Color(255, 255, 255));
         MostrarInvRelacionadasTextArea.setRows(5);
         jScrollPane6.setViewportView(MostrarInvRelacionadasTextArea);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 350, 320));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 350, 320));
+
+        Fondo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
+        Fondo.setForeground(new java.awt.Color(255, 255, 255));
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo palabra.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -298,6 +338,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuscarInvButton;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton MenuButton;
     private javax.swing.JTextArea MostrarAnalisisTextArea;
     private javax.swing.JTextArea MostrarInvRelacionadasTextArea;
