@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -25,14 +27,21 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
+    static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazAgregarResumen
      */
-    public InterfazAgregarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable) {
+    public InterfazAgregarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
+        this.listaAutoresRegistrados = listaAutoresRegistrados;
         initComponents();
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("OptionPane.messageForeground", new ColorUIResource(255, 255, 255));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
+        this.setSize(890, 700);
         this.setLocationRelativeTo(null);
     }
     
@@ -93,6 +102,12 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
             palabrasClaveHashTable.insertar(palabraCalve, newSummary);
         } else {
             listaAux.AppendAtTheEnd(newSummary);
+        }
+    }
+    
+    public  static void insertarListaAutoresregistrados(Lista listaAutoresRegistrados, String nombreAutor) {
+        if (listaAutoresRegistrados.serachInList(nombreAutor.trim()) == false) {
+            listaAutoresRegistrados.AppendOrdenadoStringsListaAutores(nombreAutor.trim());
         }
     }
     
@@ -159,6 +174,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
                         Nodo aux = autoresList.getpFirst();
                         for (int j = 0; j < autoresList.getSize(); j++) {
                             insertarAutoresHashTable(newSummary, (String) aux.getElemento());
+                            insertarListaAutoresregistrados(listaAutoresRegistrados, (String) aux.getElemento());
                             aux = aux.getpNext();
                         }
                         Nodo aux1 = keyWordsList.getpFirst();
@@ -206,6 +222,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
         MenuButton.setText("VOLVER AL MENU");
         MenuButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        MenuButton.setOpaque(true);
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
@@ -219,12 +236,13 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         AgregarResumenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
         AgregarResumenButton.setText("AGREGAR RESUMEN");
         AgregarResumenButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AgregarResumenButton.setOpaque(true);
         AgregarResumenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarResumenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 280, -1));
+        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 280, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo agregar.png"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
@@ -235,7 +253,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
     private void MenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuButtonActionPerformed
 
@@ -274,7 +292,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazAgregarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable).setVisible(true);
+                new InterfazAgregarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados).setVisible(true);
             }
         });
     }

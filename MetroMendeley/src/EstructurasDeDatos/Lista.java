@@ -69,6 +69,41 @@ public class Lista<T> {
         }
     }
     
+     public void AppendOrdenadoStringsListaAutores(T element) {
+        Nodo<String> pNew = new Nodo(element);
+        if (!isEmpty()) {
+            Nodo<String> aux = pFirst;
+            for (int i = 0; i < size; i++) {
+                if (aux.getElemento().compareToIgnoreCase(pNew.getElemento()) > 0) {
+                    pNew.setpNext(pFirst);
+                    pFirst = pNew;
+                    break;
+                }
+                else if (aux.getElemento().compareToIgnoreCase(pNew.getElemento()) < 0 &&  aux.getpNext() == null) {
+                    aux.setpNext(pNew);
+                    pLast = pNew; 
+                    break;
+                }
+                else if (aux.getElemento().compareToIgnoreCase(pNew.getElemento()) > 0 &&  aux.getpNext() == null) {
+                    pFirst = pNew;
+                    pNew.setpNext(aux);
+                    break;
+                }
+                else if (aux.getElemento().compareToIgnoreCase(pNew.getElemento()) < 0 && String.class.cast(aux.getpNext().getElemento()).compareToIgnoreCase(pNew.getElemento()) > 0) {
+                    pNew.setpNext(aux.getpNext());
+                    aux.setpNext(pNew);
+                    break;
+                }
+                aux = aux.getpNext();
+            }
+            size ++;
+        } else {
+        pFirst = pNew;
+        pLast = pNew;
+        size ++;
+        }
+    }
+    
     /**
      * Método que agrega un elemento en una posición dada, contando de izquierda a derecha
      * @param index posición en la que quiere agregarse el elemento
@@ -216,6 +251,18 @@ public class Lista<T> {
         Nodo<Summary> aux = this.getpFirst();
         for (int i = 0; i < this.getSize(); i++) {
             if (aux.getElemento().getTitulo().equalsIgnoreCase(resumen.getTitulo())) {
+                encontrado = true;
+            }
+            aux = aux.getpNext();
+        }
+        return encontrado;
+    }
+    
+    public boolean serachInList(String cadena) {
+        boolean encontrado = false;
+        Nodo<String> aux = this.getpFirst();
+        for (int i = 0; i < this.getSize(); i++) {
+            if (aux.getElemento().equalsIgnoreCase(cadena)) {
                 encontrado = true;
             }
             aux = aux.getpNext();

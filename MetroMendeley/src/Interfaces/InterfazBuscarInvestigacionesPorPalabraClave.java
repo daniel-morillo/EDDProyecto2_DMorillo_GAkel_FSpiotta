@@ -11,6 +11,8 @@ import EstructurasDeDatos.Nodo;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -21,15 +23,21 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
+    static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazBuscarInvestigacionesPorPalabraClave
      */
-    public InterfazBuscarInvestigacionesPorPalabraClave(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable) {
+    public InterfazBuscarInvestigacionesPorPalabraClave(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
+        this.listaAutoresRegistrados = listaAutoresRegistrados;
         initComponents();
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
+        this.setSize(900, 700);
     }
     
     public Image getIconImage(){
@@ -97,6 +105,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         MenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         MenuButton.setForeground(new java.awt.Color(255, 255, 255));
         MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
+        MenuButton.setOpaque(true);
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
@@ -107,12 +116,12 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Escriba una palabra clave para buscar ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("las investigaciones relacionadas");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -128,7 +137,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("(Titulo completo como aparece en el registro)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,6 +148,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         VerDetallesButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         VerDetallesButton.setForeground(new java.awt.Color(255, 255, 255));
         VerDetallesButton.setText("SELECCIONAR INVESTIGACIÓN Y VER DETALLES");
+        VerDetallesButton.setOpaque(true);
         VerDetallesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VerDetallesButtonActionPerformed(evt);
@@ -165,18 +175,19 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         SelectWordTextArea.setRows(5);
         jScrollPane5.setViewportView(SelectWordTextArea);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 350, 50));
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 350, 50));
 
         BuscarInvButton.setBackground(new java.awt.Color(102, 153, 255));
         BuscarInvButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         BuscarInvButton.setForeground(new java.awt.Color(255, 255, 255));
         BuscarInvButton.setText("BUSCAR INVESTIGACIONES RELACIONADAS");
+        BuscarInvButton.setOpaque(true);
         BuscarInvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarInvButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        getContentPane().add(BuscarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
         MostrarInvRelacionadasTextArea.setEditable(false);
         MostrarInvRelacionadasTextArea.setBackground(new java.awt.Color(0, 51, 91));
@@ -186,12 +197,12 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         MostrarInvRelacionadasTextArea.setRows(5);
         jScrollPane6.setViewportView(MostrarInvRelacionadasTextArea);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 350, 320));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 350, 320));
 
         Fondo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         Fondo.setForeground(new java.awt.Color(255, 255, 255));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo palabra.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 750));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,7 +210,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
     private void MenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuButtonActionPerformed
 
@@ -331,7 +342,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazBuscarInvestigacionesPorPalabraClave(summaryHashTable, autoresHashTable, palabrasClaveHashTable).setVisible(true);
+                new InterfazBuscarInvestigacionesPorPalabraClave(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados).setVisible(true);
             }
         });
     }

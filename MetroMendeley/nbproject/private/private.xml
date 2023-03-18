@@ -3,15 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Interfaces/InterfazAnalizarResumen.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Interfaces/InterfazInicial.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Clases/Main.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/test/resumenes_guardados.txt</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Interfaces/InterfazBuscarInvestigacionesPorAutor.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Interfaces/InterfazAgregarResumen.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Interfaces/InterfazMenu.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Interfaces/InterfazBuscarInvestigacionesPorPalabraClave.java</file>
-            <file>file:/C:/Users/Georgina/Desktop/Proycto%202%20EDD/EDDProyecto2_DMorillo_GAkel_FSpiotta/MetroMendeley/src/Imagenes/Fondo%20buscar.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Interfaces/InterfazBuscarInvestigacionesPorAutor.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/cc.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/Fondo%20agregar.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/1.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/Fondo%20Menu.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Interfaces/InterfazMenu.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Interfaces/InterfazBuscarInvestigacionesPorPalabraClave.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/EstructurasDeDatos/Lista.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/Fondo%20autor.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/Fondo%20Inicio.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/Fondo%20palabra.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/7(60%C2%A0px).png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Interfaces/InterfazInicial.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Clases/Summary.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/Fondo%20buscar.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/EstructurasDeDatos/HashTable.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Clases/Main.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Interfaces/InterfazAgregarResumen.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Interfaces/InterfazAnalizarResumen.java</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/src/Imagenes/4.png</file>
+            <file>file:/Users/fabriziospiotta/Documents/NetBeans/Proyecto%20EDD%202/MetroMendeley/test/resumenes_guardados.txt</file>
         </group>
     </open-files>
 </project-private>
