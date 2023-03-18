@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * Esta clase contiene el main que la da inicio a todo el proyecto, pre-cargando los resumenes guardados anteriormente en el programa
@@ -79,7 +81,13 @@ public class Main {
         }
     }
     
-    public static void leerTxtGuardado(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable){
+    public  static void insertarListaAutoresregistrados(Lista listaAutoresRegistrados, String nombreAutor) {
+        if (listaAutoresRegistrados.serachInList(nombreAutor.trim()) == false) {
+            listaAutoresRegistrados.AppendOrdenadoStringsListaAutores(nombreAutor.trim());
+        }
+    }
+    
+    public static void leerTxtGuardado(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados){
         String path = "test//resumenes_guardados.txt";
         File file = new File(path);
         
@@ -136,6 +144,7 @@ public class Main {
                             Nodo aux = autoresList.getpFirst();
                             for (int j = 0; j < autoresList.getSize(); j++) {
                                 insertarAutoresHashTable(autoresHashTable, newSummary, (String) aux.getElemento());
+                                insertarListaAutoresregistrados(listaAutoresRegistrados, (String) aux.getElemento());
                                 aux = aux.getpNext();
                             }
                             Nodo aux1 = keyWordsList.getpFirst();
@@ -156,11 +165,16 @@ public class Main {
     
     
     public static void main(String[] args) {  
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("OptionPane.messageForeground", new ColorUIResource(255, 255, 255));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         HashTable summaryHashTable = new HashTable(23);
         HashTable autoresHashTable = new HashTable(31);
         HashTable palabrasClaveHashTable = new HashTable(53);
-        leerTxtGuardado(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
-        InterfazInicial main = new InterfazInicial(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        Lista listaAutoresRegistrados = new Lista();
+        leerTxtGuardado(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
+        InterfazInicial main = new InterfazInicial(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         main.show();
     }
 }

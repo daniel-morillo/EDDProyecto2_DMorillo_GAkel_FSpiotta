@@ -12,6 +12,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -22,15 +24,21 @@ public class InterfazMenu extends javax.swing.JFrame {
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
+    static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazMenu
      */
-    public InterfazMenu(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable) {
+    public InterfazMenu(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
+        this.listaAutoresRegistrados = listaAutoresRegistrados;
         initComponents();
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
+        this.setSize(900, 687);
     }
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
@@ -113,12 +121,13 @@ public class InterfazMenu extends javax.swing.JFrame {
         AgregarResumenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
         AgregarResumenButton.setText("AGREGAR RESUMEN");
         AgregarResumenButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AgregarResumenButton.setOpaque(true);
         AgregarResumenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarResumenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 470, 100));
+        getContentPane().add(AgregarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 470, 100));
 
         AnalizarResumenButton.setBackground(new java.awt.Color(255, 204, 102));
         AnalizarResumenButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -126,12 +135,13 @@ public class InterfazMenu extends javax.swing.JFrame {
         AnalizarResumenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
         AnalizarResumenButton.setText("ANALIZAR RESUMEN");
         AnalizarResumenButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AnalizarResumenButton.setOpaque(true);
         AnalizarResumenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AnalizarResumenButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AnalizarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 470, 100));
+        getContentPane().add(AnalizarResumenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 470, 100));
 
         BuscarPalabraClaveButton.setBackground(new java.awt.Color(102, 153, 255));
         BuscarPalabraClaveButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -139,12 +149,13 @@ public class InterfazMenu extends javax.swing.JFrame {
         BuscarPalabraClaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
         BuscarPalabraClaveButton.setText("BUSCAR POR PALABRA CLAVE");
         BuscarPalabraClaveButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BuscarPalabraClaveButton.setOpaque(true);
         BuscarPalabraClaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarPalabraClaveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPalabraClaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 470, 100));
+        getContentPane().add(BuscarPalabraClaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 470, 100));
 
         BuscarPorAutorButton.setBackground(new java.awt.Color(255, 153, 102));
         BuscarPorAutorButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -152,12 +163,13 @@ public class InterfazMenu extends javax.swing.JFrame {
         BuscarPorAutorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
         BuscarPorAutorButton.setText("BUSCAR POR AUTOR");
         BuscarPorAutorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BuscarPorAutorButton.setOpaque(true);
         BuscarPorAutorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarPorAutorButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarPorAutorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 470, 100));
+        getContentPane().add(BuscarPorAutorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 470, 100));
 
         SalirDelSistemaButton.setBackground(new java.awt.Color(0, 51, 153));
         SalirDelSistemaButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -165,12 +177,13 @@ public class InterfazMenu extends javax.swing.JFrame {
         SalirDelSistemaButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
         SalirDelSistemaButton.setText("SALIR DEL SISTEMA");
         SalirDelSistemaButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        SalirDelSistemaButton.setOpaque(true);
         SalirDelSistemaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirDelSistemaButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SalirDelSistemaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 540, 470, 90));
+        getContentPane().add(SalirDelSistemaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 470, 90));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo Menu.png"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
@@ -181,28 +194,28 @@ public class InterfazMenu extends javax.swing.JFrame {
     private void AgregarResumenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarResumenButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazAgregarResumen newI = new InterfazAgregarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazAgregarResumen newI = new InterfazAgregarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         newI.setVisible(true);
     }//GEN-LAST:event_AgregarResumenButtonActionPerformed
 
     private void BuscarPalabraClaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPalabraClaveButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazBuscarInvestigacionesPorPalabraClave newI = new InterfazBuscarInvestigacionesPorPalabraClave(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazBuscarInvestigacionesPorPalabraClave newI = new InterfazBuscarInvestigacionesPorPalabraClave(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         newI.setVisible(true);
     }//GEN-LAST:event_BuscarPalabraClaveButtonActionPerformed
 
     private void BuscarPorAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPorAutorButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazBuscarInvestigacionesPorAutor newI = new InterfazBuscarInvestigacionesPorAutor(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazBuscarInvestigacionesPorAutor newI = new InterfazBuscarInvestigacionesPorAutor(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         newI.setVisible(true);
     }//GEN-LAST:event_BuscarPorAutorButtonActionPerformed
 
     private void AnalizarResumenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalizarResumenButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazAnalizarResumen newI = new InterfazAnalizarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazAnalizarResumen newI = new InterfazAnalizarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         newI.setVisible(true);
     }//GEN-LAST:event_AnalizarResumenButtonActionPerformed
 
@@ -242,7 +255,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable).setVisible(true);
+                new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados).setVisible(true);
             }
         });
     }

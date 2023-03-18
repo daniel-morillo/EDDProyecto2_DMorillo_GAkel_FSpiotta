@@ -11,6 +11,8 @@ import EstructurasDeDatos.Nodo;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -21,15 +23,26 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
+    static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazBuscarInvestigacionesPorAutor
      */
-    public InterfazBuscarInvestigacionesPorAutor(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable) {
+    public InterfazBuscarInvestigacionesPorAutor(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
+        this.listaAutoresRegistrados = listaAutoresRegistrados;
         initComponents();
-        this.setLocationRelativeTo(null);
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
+        this.setLocationRelativeTo(null);  
+        Nodo aux = listaAutoresRegistrados.getpFirst();
+        this.setSize(900, 700);
+        for (int i = 0; i < listaAutoresRegistrados.getSize(); i++) {
+            listaDesplegable.addItem((String) aux.getElemento());
+            aux = aux.getpNext();
+        }
     }
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
@@ -78,13 +91,11 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         SeleccionarInvButton = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         MostrarAnalisisTextArea = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        SelectAutorTextArea = new javax.swing.JTextArea();
-        SeleccionarInvButton1 = new javax.swing.JButton();
+        SeleccionarInvAutorButton = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         MostrarInvRelacionadasTextArea = new javax.swing.JTextArea();
+        listaDesplegable = new javax.swing.JComboBox<>();
         Fondo = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -97,6 +108,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         MenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         MenuButton.setForeground(new java.awt.Color(255, 255, 255));
         MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
+        MenuButton.setOpaque(true);
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
@@ -106,13 +118,13 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Escriba el nombre del autor para buscar ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        jLabel1.setText("Seleccione el autor para visualizar");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("las investigaciones relacionadas con el mismo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -139,12 +151,13 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         SeleccionarInvButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         SeleccionarInvButton.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionarInvButton.setText("SELECCIONAR INVESTIGACION Y VER DETALLES");
+        SeleccionarInvButton.setOpaque(true);
         SeleccionarInvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarInvButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SeleccionarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 410, 30));
+        getContentPane().add(SeleccionarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 410, 30));
 
         MostrarAnalisisTextArea.setEditable(false);
         MostrarAnalisisTextArea.setBackground(new java.awt.Color(0, 51, 91));
@@ -156,27 +169,17 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 370, 320));
 
-        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        SelectAutorTextArea.setBackground(new java.awt.Color(255, 153, 102));
-        SelectAutorTextArea.setColumns(20);
-        SelectAutorTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
-        SelectAutorTextArea.setForeground(new java.awt.Color(255, 255, 255));
-        SelectAutorTextArea.setRows(5);
-        jScrollPane5.setViewportView(SelectAutorTextArea);
-
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 370, 100));
-
-        SeleccionarInvButton1.setBackground(new java.awt.Color(255, 153, 102));
-        SeleccionarInvButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
-        SeleccionarInvButton1.setForeground(new java.awt.Color(255, 255, 255));
-        SeleccionarInvButton1.setText("BUSCAR INVESTIGACIONES RELACIONADAS");
-        SeleccionarInvButton1.addActionListener(new java.awt.event.ActionListener() {
+        SeleccionarInvAutorButton.setBackground(new java.awt.Color(255, 153, 102));
+        SeleccionarInvAutorButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        SeleccionarInvAutorButton.setForeground(new java.awt.Color(255, 255, 255));
+        SeleccionarInvAutorButton.setText("BUSCAR INVESTIGACIONES RELACIONADAS");
+        SeleccionarInvAutorButton.setOpaque(true);
+        SeleccionarInvAutorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeleccionarInvButton1ActionPerformed(evt);
+                SeleccionarInvAutorButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(SeleccionarInvButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 380, 30));
+        getContentPane().add(SeleccionarInvAutorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 380, 30));
 
         MostrarInvRelacionadasTextArea.setEditable(false);
         MostrarInvRelacionadasTextArea.setBackground(new java.awt.Color(0, 51, 91));
@@ -186,14 +189,24 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         MostrarInvRelacionadasTextArea.setRows(5);
         jScrollPane6.setViewportView(MostrarInvRelacionadasTextArea);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 380, 320));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 380, 320));
+
+        listaDesplegable.setBackground(new java.awt.Color(255, 153, 102));
+        listaDesplegable.setForeground(new java.awt.Color(255, 255, 255));
+        listaDesplegable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el autor aquí --> " }));
+        listaDesplegable.setOpaque(true);
+        listaDesplegable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDesplegableActionPerformed(evt);
+            }
+        });
+        getContentPane().add(listaDesplegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 380, 50));
 
         Fondo.setBackground(new java.awt.Color(255, 153, 102));
         Fondo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         Fondo.setForeground(new java.awt.Color(255, 255, 255));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo autor.png"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 650, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,7 +214,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     private void MenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuButtonActionPerformed
 
@@ -215,10 +228,10 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
             if (!Nombre.contains(".")) {
                 Nombre += ".";
             }
-            if (SelectAutorTextArea.getText().equals("")) {
+            if (listaDesplegable.getSelectedItem().equals("")) {
                 JOptionPane.showMessageDialog(null, "Porfavor ingrese en el campo de arriba a la izquierda, el nombre del autor de la investigacion que desea, para validar los detalles del resumen que se debe mostrar");
             } else {
-                Lista listaInvestigacionesEncontradas = autoresHashTable.obtenerAutores(SelectAutorTextArea.getText());
+                Lista listaInvestigacionesEncontradas = autoresHashTable.obtenerAutores((String) listaDesplegable.getSelectedItem());
                 Nodo<Summary> aux = listaInvestigacionesEncontradas.getpFirst();
                 Summary resumenEncontrado = null;
                 for (int i = 0; i < listaInvestigacionesEncontradas.getSize(); i++) {
@@ -277,9 +290,9 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SeleccionarInvButtonActionPerformed
 
-    private void SeleccionarInvButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarInvButton1ActionPerformed
+    private void SeleccionarInvAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarInvAutorButtonActionPerformed
         // TODO add your handling code here:
-        String autorSelected = SelectAutorTextArea.getText();
+        String autorSelected = (String) listaDesplegable.getSelectedItem();
         if (autorSelected.equals("")) {
             JOptionPane.showMessageDialog(null, "El campo esta vacio, porfavor escriba el nombre de la investigacion a seleccionar");
         } else {
@@ -300,7 +313,11 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna investigacion a nombre del autor proporcionado. (Asegurese de haber colocado los acentos, en caso de que el nombre del autor los tenga)");
             }
         }
-    }//GEN-LAST:event_SeleccionarInvButton1ActionPerformed
+    }//GEN-LAST:event_SeleccionarInvAutorButtonActionPerformed
+
+    private void listaDesplegableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDesplegableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDesplegableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +349,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazBuscarInvestigacionesPorAutor(summaryHashTable, autoresHashTable, palabrasClaveHashTable).setVisible(true);
+                new InterfazBuscarInvestigacionesPorAutor(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados).setVisible(true);
             }
         });
     }
@@ -343,9 +360,8 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     private javax.swing.JTextArea MostrarAnalisisTextArea;
     private javax.swing.JTextArea MostrarInvRelacionadasTextArea;
     private javax.swing.JTextArea SeleccionTextArea;
+    private javax.swing.JButton SeleccionarInvAutorButton;
     private javax.swing.JButton SeleccionarInvButton;
-    private javax.swing.JButton SeleccionarInvButton1;
-    private javax.swing.JTextArea SelectAutorTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -353,8 +369,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JComboBox<String> listaDesplegable;
     // End of variables declaration//GEN-END:variables
 }

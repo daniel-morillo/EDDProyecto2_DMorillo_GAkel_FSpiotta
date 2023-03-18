@@ -5,10 +5,13 @@
 package Interfaces;
 
 import EstructurasDeDatos.HashTable;
+import EstructurasDeDatos.Lista;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -19,15 +22,21 @@ public class InterfazInicial extends javax.swing.JFrame {
     private static HashTable summaryHashTable;
     private static HashTable autoresHashTable;
     private static HashTable palabrasClaveHashTable;
+    private static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazPrincipal
      */
-    public InterfazInicial(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable) {
+    public InterfazInicial(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
+        this.listaAutoresRegistrados =  listaAutoresRegistrados;
         initComponents();
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
+        this.setSize(900, 700);
     }
     
     public Image getIconImage(){
@@ -66,6 +75,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         IrMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7.png"))); // NOI18N
         IrMenuButton.setText("IR AL MENU PRINCIPAL");
         IrMenuButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        IrMenuButton.setOpaque(true);
         IrMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IrMenuButtonActionPerformed(evt);
@@ -80,6 +90,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         BorrarSistemaButton.setText("BORRAR PRE-GUARDADO");
         BorrarSistemaButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BorrarSistemaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BorrarSistemaButton.setOpaque(true);
         BorrarSistemaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BorrarSistemaButtonActionPerformed(evt);
@@ -115,7 +126,7 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     private void IrMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrMenuButtonActionPerformed
         // TODO add your handling code here:
-        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         this.setVisible(false);
         menu.setVisible(true);                
     }//GEN-LAST:event_IrMenuButtonActionPerformed
@@ -164,7 +175,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazInicial(summaryHashTable, autoresHashTable, palabrasClaveHashTable).setVisible(true);
+                new InterfazInicial(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados).setVisible(true);
             }
         });
     }

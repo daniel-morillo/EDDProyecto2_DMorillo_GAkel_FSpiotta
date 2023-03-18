@@ -11,6 +11,8 @@ import EstructurasDeDatos.Nodo;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -21,16 +23,23 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
+    static Lista listaAutoresRegistrados;
     
     /**
      * Creates new form InterfazAnalizarResumen
      */
-    public InterfazAnalizarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable) {
+    public InterfazAnalizarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
         this.palabrasClaveHashTable = palabrasClaveHashTable;
+        this.listaAutoresRegistrados = listaAutoresRegistrados;
         initComponents();
+        UIManager UI = new UIManager();
+        UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
+        UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
+        this.setSize(900, 700);
+        this.setSize(900, 700);
     }
     
     public Image getIconImage(){
@@ -108,6 +117,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         MenuButton.setBackground(new java.awt.Color(0, 51, 153));
         MenuButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         MenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7(60 px).png"))); // NOI18N
+        MenuButton.setOpaque(true);
         MenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuButtonActionPerformed(evt);
@@ -130,6 +140,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         VisualizarButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         VisualizarButton.setForeground(new java.awt.Color(255, 255, 255));
         VisualizarButton.setText("VISUALIZAR INVESTIGACIONES REALIZADAS");
+        VisualizarButton.setOpaque(true);
         VisualizarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VisualizarButtonActionPerformed(evt);
@@ -152,18 +163,19 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Titulo completo como aparece en el registro)");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Escriba el nombre de la investigación ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, -1, -1));
 
         SeleccionarInvButton.setBackground(new java.awt.Color(255, 204, 102));
         SeleccionarInvButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         SeleccionarInvButton.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionarInvButton.setText("SELECCIONAR INVESTIGACIÓN Y ANALIZAR");
         SeleccionarInvButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        SeleccionarInvButton.setOpaque(true);
         SeleccionarInvButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarInvButtonActionPerformed(evt);
@@ -191,7 +203,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
     private void MenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable);
+        InterfazMenu menu = new InterfazMenu(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuButtonActionPerformed
 
@@ -305,7 +317,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazAnalizarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable).setVisible(true);
+                new InterfazAnalizarResumen(summaryHashTable, autoresHashTable, palabrasClaveHashTable, listaAutoresRegistrados).setVisible(true);
             }
         });
     }
