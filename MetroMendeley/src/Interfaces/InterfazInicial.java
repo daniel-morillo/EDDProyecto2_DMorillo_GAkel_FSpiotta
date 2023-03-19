@@ -14,8 +14,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz da acceso a las funciones de menú y de borrar el preguardado ya asignado a la aplicación
+ * @author Fabrizio Spiotta, Daniel Morillo, Georgina Akel
  */
 public class InterfazInicial extends javax.swing.JFrame {
     
@@ -25,6 +25,10 @@ public class InterfazInicial extends javax.swing.JFrame {
     private static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazPrincipal
+     * @param summaryHashTable
+     * @param autoresHashTable
+     * @param palabrasClaveHashTable
+     * @param listaAutoresRegistrados
      */
     public InterfazInicial(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
@@ -39,6 +43,10 @@ public class InterfazInicial extends javax.swing.JFrame {
         this.setSize(900, 700);
     }
     
+    /**
+     * Cambia el ícono de la interfaz
+     * @return el nuevo ícono
+     */
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;

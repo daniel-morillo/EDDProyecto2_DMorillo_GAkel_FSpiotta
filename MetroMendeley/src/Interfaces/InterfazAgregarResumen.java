@@ -19,8 +19,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz corresponde a la función de agregar un resumen
+ * @author Fabrizio Spiotta, Daniel Morillo, Georgina Akel
  */
 public class InterfazAgregarResumen extends javax.swing.JFrame {
     
@@ -30,6 +30,10 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
     static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazAgregarResumen
+     * @param summaryHashTable Hashtable de los resúmenes
+     * @param autoresHashTable Hashtable de los autores
+     * @param listaAutoresRegistrados lista de los autores registrados hasta el momento
+     * @param palabrasClaveHashTable Hashtable de las palabras clave
      */
     public InterfazAgregarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
@@ -45,11 +49,21 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    /**
+     * Cambia el ícono de la interfaz
+     * @return el nuevo ícono
+     */
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;
     }
     
+    /**
+     * Inserta un nuevo resumen
+     * @param newSummary el resumen a sser insertado 
+     * @param nombreArticulo el nombre del artículo del resumen a ser ingresado
+     * @return
+     */
     public int insertarSummaryHashTable(Summary newSummary, String nombreArticulo) {
         boolean encontrado = false;
         int cont = 0;
@@ -75,6 +89,11 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         return cont;
     }
     
+    /**
+     * Método que inserta autores
+     * @param newSummary el resumen del artículo de los autores a ser ingresados
+     * @param nombreAutor nombre de los autores
+     */
     public static void insertarAutoresHashTable(Summary newSummary, String nombreAutor) {
         boolean encontrado = false;
         int hashIndex = autoresHashTable.hash(nombreAutor);
@@ -90,6 +109,11 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Inserta palabras clave 
+     * @param newSummary el resumen del articulo de las palabras claves ingresadas
+     * @param palabraCalve las palabras clave
+     */
     public static void insertarPalabrasClaveHashTable(Summary newSummary, String palabraCalve) {
         boolean encontrado = false;
         int hashIndex = palabrasClaveHashTable.hash(palabraCalve);
@@ -105,6 +129,11 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Método que insertar autores dentro de una lista de autores
+     * @param listaAutoresRegistrados lista de autores previa
+     * @param nombreAutor nombre del autor a ser ingresado
+     */
     public  static void insertarListaAutoresregistrados(Lista listaAutoresRegistrados, String nombreAutor) {
         if (listaAutoresRegistrados.serachInList(nombreAutor.trim()) == false) {
             listaAutoresRegistrados.AppendOrdenadoStringsListaAutores(nombreAutor.trim());
