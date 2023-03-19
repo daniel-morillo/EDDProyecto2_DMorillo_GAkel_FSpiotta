@@ -21,8 +21,10 @@ import javax.swing.plaf.ColorUIResource;
  */
 public class Main {
     /**
-     *
-     * @param args
+     * Método que inserta un resumen a una hashtbale dada
+     * @param summaryHashTable la hashtable en la cual se insertará el resumen
+     * @param newSummary el nuevo resumen
+     * @param nombreArticulo el nombre del artículo
      */
      
     public static void insertarSummaryHashTable(HashTable summaryHashTable, Summary newSummary, String nombreArticulo) {
@@ -47,6 +49,12 @@ public class Main {
         }
     }
     
+    /**
+     * Método que inserta autores dentro de una hashtable
+     * @param autoresHashTable La hashtable de los autores
+     * @param newSummary el resumen del artículo de los autores a ser ingresados
+     * @param nombreAutor nombre de los autores
+     */
     public static void insertarAutoresHashTable(HashTable autoresHashTable, Summary newSummary, String nombreAutor) {
         boolean encontrado = false;
         int hashIndex = autoresHashTable.hash(nombreAutor);
@@ -64,6 +72,12 @@ public class Main {
         }
     }
     
+    /**
+     * Método que inserta palabras clave dentro de una hashtable
+     * @param palabrasClaveHashTable la hashtable de las palabras clave
+     * @param newSummary el resumen del artículo de las palabras clave a ser ingresadas
+     * @param palabraCalve las palabras clave
+     */
     public static void insertarPalabrasClaveHashTable(HashTable palabrasClaveHashTable, Summary newSummary, String palabraCalve) {
         boolean encontrado = false;
         int hashIndex = palabrasClaveHashTable.hash(palabraCalve);
@@ -81,12 +95,24 @@ public class Main {
         }
     }
     
+    /**
+     * Método que insertar autores dentro de una lista de autores
+     * @param listaAutoresRegistrados lista de autores previa
+     * @param nombreAutor nombre del autor a ser ingresado
+     */
     public  static void insertarListaAutoresregistrados(Lista listaAutoresRegistrados, String nombreAutor) {
         if (listaAutoresRegistrados.serachInList(nombreAutor.trim()) == false) {
             listaAutoresRegistrados.AppendOrdenadoStringsListaAutores(nombreAutor.trim());
         }
     }
     
+    /**
+     * Método que lee determinado TXT seleccionado por el usuario
+     * @param summaryHashTable la hashtable de los resúemenes
+     * @param autoresHashTable la hashtable de los autores
+     * @param palabrasClaveHashTable la hashtable de las palabras clave
+     * @param listaAutoresRegistrados la lista de los autores registrados 
+     */
     public static void leerTxtGuardado(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados){
         String path = "test//resumenes_guardados.txt";
         File file = new File(path);
@@ -163,7 +189,10 @@ public class Main {
         }
     }
     
-    
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {  
         UIManager UI = new UIManager();
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));

@@ -16,8 +16,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz corresponde al menú, a partir de ella es que se puede acceder a las otras interfaces y sus funciones
+ * @author Georgina Akel, Fabrizio Spiotta, Daniel Morillo
  */
 public class InterfazMenu extends javax.swing.JFrame {
 
@@ -27,6 +27,10 @@ public class InterfazMenu extends javax.swing.JFrame {
     static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazMenu
+     * @param summaryHashTable
+     * @param autoresHashTable
+     * @param palabrasClaveHashTable
+     * @param listaAutoresRegistrados
      */
     public InterfazMenu(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
@@ -40,10 +44,21 @@ public class InterfazMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setSize(900, 687);
     }
+
+    /**
+     * Cambia el ícono de la interfaz 
+     * @return el nuevo ícono
+     */
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;
     }
+
+    /**
+     * Imprime un resumen
+     * @param summary el resumen a ser impreso
+     * @return un stirng con el resumen deseado
+     */
     public String imprimirResumen(Summary summary) {
         String cadena = "";
         cadena += summary.getTitulo() + "\n" + "\n";
@@ -66,7 +81,9 @@ public class InterfazMenu extends javax.swing.JFrame {
         return cadena;
     }
     
-    
+    /**
+     * Función que registra los resúmenes pasados por un txt
+     */
     public void escribir_txt() {
         String cadenaDeTexto = "";
         for (int i = 0; i < this.summaryHashTable.getArrayHash().length; i++) {

@@ -15,8 +15,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz corresponde a la función  de buscar por palabras clave
+ * @author Georgina Akel, Daniel Morillo, Fabrizio Spiotta
  */
 public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JFrame {
     
@@ -26,6 +26,10 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
     static Lista listaAutoresRegistrados;
     /**
      * Creates new form InterfazBuscarInvestigacionesPorPalabraClave
+     * @param summaryHashTable
+     * @param autoresHashTable
+     * @param palabrasClaveHashTable
+     * @param listaAutoresRegistrados
      */
     public InterfazBuscarInvestigacionesPorPalabraClave(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
@@ -40,11 +44,20 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         this.setSize(900, 700);
     }
     
+    /**
+     * Cambia el ícono de la interfaz
+     * @return elnuevo ícono
+     */
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;
     }
     
+    /**
+     * Imprime un resumen retornado
+     * @param summary el resumen a ser impreso
+     * @return una cadena con el resumen a ser impreso
+     */
     public String imprimirResumen(Summary summary) {
         String cadena = "";
         cadena += summary.getTitulo() + "\n" + "\n";

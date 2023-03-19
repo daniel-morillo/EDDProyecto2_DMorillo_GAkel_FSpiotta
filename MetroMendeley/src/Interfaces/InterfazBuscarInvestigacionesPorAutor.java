@@ -15,18 +15,25 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz corresponde a la función de buscar investigaciones por autor
+ * @author Fabrizio Spiotta, Daniel Morillo, Georgina Akel
  */
 public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
-    
+
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
     static Lista listaAutoresRegistrados;
+
     /**
      * Creates new form InterfazBuscarInvestigacionesPorAutor
+     * @param summaryHashTable Hashtable de los resúmenes
+     * @param autoresHashTable Hashtable de los autores
+     * @param listaAutoresRegistrados lista de los autores registrados hasta el
+     * momento
+     * @param palabrasClaveHashTable Hashtable de las palabras clave
      */
+    
     public InterfazBuscarInvestigacionesPorAutor(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
         this.autoresHashTable = autoresHashTable;
@@ -36,7 +43,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
         UIManager UI = new UIManager();
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
         UI.put("Panel.background", new ColorUIResource(255, 153, 102));
-        this.setLocationRelativeTo(null);  
+        this.setLocationRelativeTo(null);
         Nodo aux = listaAutoresRegistrados.getpFirst();
         this.setSize(900, 700);
         for (int i = 0; i < listaAutoresRegistrados.getSize(); i++) {
@@ -44,33 +51,43 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
             aux = aux.getpNext();
         }
     }
-    public Image getIconImage(){
+
+    /**
+     * Cambia el ícono de la interfaz
+     * @return el nuevo ícono
+     */
+    public Image getIconImage() {
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;
     }
-    
+
+    /**
+     * Imprime un resumen retornado
+     * @param summary el resumen a ser impreso
+     * @return una cadena con el resumen a ser impreso
+     */
     public String imprimirResumen(Summary summary) {
         String cadena = "";
         cadena += summary.getTitulo() + "\n" + "\n";
         cadena += "Autores" + "\n";
         Nodo aux = summary.getAutores().getpFirst();
         for (int i = 0; i < summary.getAutores().getSize(); i++) {
-           cadena += aux.getElemento() + "\n";
-           aux = aux.getpNext();
+            cadena += aux.getElemento() + "\n";
+            aux = aux.getpNext();
         }
         cadena += "\n";
         cadena += "Resumen" + "\n";
         cadena += summary.getCuerpoResumen() + "\n" + "\n";
         cadena += "Palabras Claves: ";
         Nodo aux1 = summary.getKeyWords().getpFirst();
-        for (int i = 0; i < summary.getKeyWords().getSize()- 1; i++) {
-           cadena += aux1.getElemento() + ", ";
-           aux1 = aux1.getpNext();
+        for (int i = 0; i < summary.getKeyWords().getSize() - 1; i++) {
+            cadena += aux1.getElemento() + ", ";
+            aux1 = aux1.getpNext();
         }
         cadena += summary.getKeyWords().getpLast().getElemento() + ".";
         return cadena;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -243,7 +260,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                 if (resumenEncontrado == null) {
                     JOptionPane.showMessageDialog(null, "La investigacion seleccionada no se ha encontrado en el registro. (Asegurese de haber colocado los acentos, en caso de que el titulo los tenga)");
                 } else {
-                    String [] cuerpoResumenSeparado = resumenEncontrado.getCuerpoResumen().replaceAll("\\p{Punct}", "").split(" ");
+                    String[] cuerpoResumenSeparado = resumenEncontrado.getCuerpoResumen().replaceAll("\\p{Punct}", "").split(" ");
 
                     cadenaForPrint += resumenEncontrado.getTitulo() + "\n" + "\n";
                     cadenaForPrint += "Autores: ";
@@ -258,7 +275,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                     for (int i = 0; i < resumenEncontrado.getKeyWords().getSize(); i++) {
                         int cont = 0;
                         for (int j = 0; j < cuerpoResumenSeparado.length; j++) {
-                            String [] auxDesplazado = String.class.cast(aux1.getElemento()).split(" ");
+                            String[] auxDesplazado = String.class.cast(aux1.getElemento()).split(" ");
                             if (auxDesplazado.length == 1) {
                                 if (cuerpoResumenSeparado[j].equalsIgnoreCase((String) aux1.getElemento())) {
                                     cont += 1;
@@ -266,10 +283,10 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                             } else {
                                 int contadorCheckin = 0;
                                 if (cuerpoResumenSeparado[j].equalsIgnoreCase(auxDesplazado[0])) {
-                                    contadorCheckin +=1;
+                                    contadorCheckin += 1;
                                     for (int k = 1; k < auxDesplazado.length; k++) {
                                         if (cuerpoResumenSeparado[j + k].equalsIgnoreCase(auxDesplazado[k])) {
-                                            contadorCheckin +=1;
+                                            contadorCheckin += 1;
                                         }
                                     }
                                 }
@@ -301,7 +318,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
             if (!listaInvestigacionesEncontradas.isEmpty()) {
                 Nodo<Summary> aux = listaInvestigacionesEncontradas.getpFirst();
                 for (int i = 1; i < listaInvestigacionesEncontradas.getSize() + 1; i++) {
-                    cadenaForPrint += "INVESTIGACION #" + Integer.toString(i) +"--> " + "\n";
+                    cadenaForPrint += "INVESTIGACION #" + Integer.toString(i) + "--> " + "\n";
                     cadenaForPrint += imprimirResumen(aux.getElemento());
                     cadenaForPrint += "\n" + "\n" + "\n";
                     aux = aux.getpNext();

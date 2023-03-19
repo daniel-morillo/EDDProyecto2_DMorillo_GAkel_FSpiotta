@@ -15,8 +15,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 /**
- *
- * @author fabriziospiotta
+ * Esta interfaz corresponde a la función de analizar un resumen
+ * @author Fabrizio Spiotta, Daniel Morillo, Georgina Akel
  */
 public class InterfazAnalizarResumen extends javax.swing.JFrame {
     
@@ -27,6 +27,10 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
     
     /**
      * Creates new form InterfazAnalizarResumen
+     * @param summaryHashTable Hashtable de los resúmenes
+     * @param autoresHashTable Hashtable de los autores
+     * @param listaAutoresRegistrados lista de los autores registrados hasta el momento
+     * @param palabrasClaveHashTable Hashtable de las palabras clave
      */
     public InterfazAnalizarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
         this.summaryHashTable = summaryHashTable;
@@ -42,11 +46,20 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         this.setSize(900, 700);
     }
     
+    /**
+     * Cambia el ícono de la interfaz
+     * @return el nuevo ícono
+     */
     public Image getIconImage(){
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;
     }
     
+    /**
+     * Imprime un resumen
+     * @param summary el resumen a imprimir
+     * @return un String con el contenido del resumen
+     */
     public String imprimirResumen(Summary summary) {
         String cadena = "";
         cadena += summary.getTitulo() + "\n" + "\n";
@@ -69,6 +82,10 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         return cadena;
     }
     
+    /**
+     * Método que transforma la lista de hash´s a una lista ordenada alfabeticamente
+     * @return la lista alfabéticamente ordenada
+     */
     public Lista transformToAlphabeticList() {
         Lista newList = new Lista();
         for (int i = 0; i < this.summaryHashTable.getArrayHash().length; i++) {

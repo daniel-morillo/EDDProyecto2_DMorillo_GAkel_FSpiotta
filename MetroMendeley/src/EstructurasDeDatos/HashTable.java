@@ -8,19 +8,29 @@ import Clases.Summary;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Daniel Morillo
+ * Esta classe integra la estructura de datos de una HashTable
+ * @author Daniel Morillo,Fabrizio Spiotta, Georgina Akel
+ * @param <T>
  */
 public class HashTable<T> {
     
     private Lista[] arrayHash;
     private int size;
 
+    /**
+     * Constructor de la clase
+     * @param size tamaño a ser definido en la hash table
+     */
     public HashTable(int size) {
         this.size = size;
         this.arrayHash = new Lista[size];
     }
     
+    /**
+     * Método que pone en mayúscula la primera letra de una palabra
+     * @param palabra palabra a ser editada
+     * @return palabra capitalizada
+     */
     public String capitalizeTitle(String palabra) {  
         String words[]= palabra.split("\\s");  
         String capitalizeWord="";  
@@ -32,6 +42,11 @@ public class HashTable<T> {
         return capitalizeWord.trim();  
     }
     
+    /**
+     * Método para obtener el valor ASCII de una palabra sumando los valores de sus letras
+     * @param name Palabra a obtener el valor ASCII
+     * @return suma de los valores ASCII de las letras de una palabra
+     */
     public int getAsciiValue(String name){
         int suma = 0;
         String [] array = name.split(" ");
@@ -43,6 +58,11 @@ public class HashTable<T> {
         return suma;
     }
     
+    /**
+     * Método que le asigna un valor hash para la HashTable a un String dado
+     * @param n String al cual se le asigna el valor del hash
+     * @return valor del hash del texto introducido
+     */
     public int hash(String n){
         int clave;
         String palabra = this.capitalizeTitle(n);
@@ -50,6 +70,11 @@ public class HashTable<T> {
         return clave;
     }
     
+    /**
+     * Método que inserta determinado valor a la hashtable
+     * @param key Corresponde a un valor que se pasa para obtenerle el valor del hash
+     * @param valor corresponde a la información que se quiere introducir en la hashtable
+     */
     public void insertar(String key, T valor){
         int hashindex = hash(key);
         Lista subLista = new Lista();
@@ -62,6 +87,11 @@ public class HashTable<T> {
         }
     } 
     
+    /**
+     * Método que obtiene un valor que se encuentra en la hashtable
+     * @param key valor que fue seleccionado a la hora de introducir el valor a la hashtable
+     * @return el valor buscado
+     */
     public T obtener(String key){
         T valor = null;
         int hashindex = hash(key);
@@ -79,6 +109,11 @@ public class HashTable<T> {
         return valor;  
     }
     
+    /**
+     * Método que obtiene un valor que se encuentra en la hashtable por su valor hash
+     * @param hash valor hash que sse le asignó al valor introducido
+     * @return el valor buscado
+     */
     public Lista obtenerPorHash(int hash) {
         Lista valorArreglo = getArrayHash()[hash];
         Lista newList = new Lista();
@@ -90,6 +125,11 @@ public class HashTable<T> {
         return newList;
     }
     
+    /**
+     * Método que obtiene los autores de un resumen articulo introducido en la hashtable
+     * @param key valor que fue seleccionado a la hora de introducir el valor a la hashtable
+     * @return autores del artículo
+     */
     public Lista obtenerAutores(String key) {
         int hashindex = hash(key);
         Lista valorArreglo = getArrayHash()[hashindex];
@@ -110,6 +150,11 @@ public class HashTable<T> {
         return newList;
     }
     
+    /**
+     * Obtiene las palabras clave de un artículo introducido en la hashtable
+     * @param key valor que fue seleccionado a la hora de introducir el valor a la hashtable
+     * @return las palabras claves del articulo
+     */
     public Lista obtenerPalabraClave(String key) {
         int hashindex = hash(key);
         Lista valorArreglo = getArrayHash()[hashindex];
@@ -131,28 +176,32 @@ public class HashTable<T> {
     }
 
     /**
-     * @return the arrayHash
+     * Obtiene los hash de un array
+     * @return la lista de los hash del array
      */
     public Lista[] getArrayHash() {
         return arrayHash;
     }
 
     /**
-     * @param arrayHash the arrayHash to set
+     * Establece una lista de hash´s de un array
+     * @param arrayHash los hash para el array a ser establecido
      */
     public void setArrayHash(Lista[] arrayHash) {
         this.arrayHash = arrayHash;
     }
 
     /**
-     * @return the size
+     * Obtiene el tamaño de la hashtable
+     * @return el tamaño
      */
     public int getSize() {
         return size;
     }
 
     /**
-     * @param size the size to set
+     * Establece el tamaño de la hashtable
+     * @param size el tamaño a ser establecido
      */
     public void setSize(int size) {
         this.size = size;
