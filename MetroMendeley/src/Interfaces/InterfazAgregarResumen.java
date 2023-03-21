@@ -45,7 +45,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
         UI.put("OptionPane.messageForeground", new ColorUIResource(255, 255, 255));
         UI.put("Panel.background", new ColorUIResource(255, 153, 102));
-        this.setSize(890, 700);
+        this.setSize(900, 760);
         this.setLocationRelativeTo(null);
     }
     
@@ -257,7 +257,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
                 MenuButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 600, 220, -1));
+        getContentPane().add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 600, 220, -1));
 
         AgregarResumenButton.setBackground(new java.awt.Color(255, 204, 153));
         AgregarResumenButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N

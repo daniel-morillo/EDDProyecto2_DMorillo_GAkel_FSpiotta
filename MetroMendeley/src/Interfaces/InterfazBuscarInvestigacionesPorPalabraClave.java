@@ -41,7 +41,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
         UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
-        this.setSize(900, 700);
+        this.setSize(910, 760);
     }
     
     /**
@@ -129,18 +129,18 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Escriba una palabra clave para buscar ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("las investigaciones relacionadas");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         SeleccionTextArea.setBackground(new java.awt.Color(102, 153, 255));
         SeleccionTextArea.setColumns(20);
-        SeleccionTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
+        SeleccionTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         SeleccionTextArea.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionTextArea.setRows(5);
         jScrollPane3.setViewportView(SeleccionTextArea);
@@ -183,7 +183,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
 
         SelectWordTextArea.setBackground(new java.awt.Color(102, 153, 255));
         SelectWordTextArea.setColumns(20);
-        SelectWordTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
+        SelectWordTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         SelectWordTextArea.setForeground(new java.awt.Color(255, 255, 255));
         SelectWordTextArea.setRows(5);
         jScrollPane5.setViewportView(SelectWordTextArea);
@@ -200,7 +200,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
                 BuscarInvButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        getContentPane().add(BuscarInvButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         MostrarInvRelacionadasTextArea.setEditable(false);
         MostrarInvRelacionadasTextArea.setBackground(new java.awt.Color(0, 51, 91));
@@ -215,7 +215,7 @@ public class InterfazBuscarInvestigacionesPorPalabraClave extends javax.swing.JF
         Fondo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         Fondo.setForeground(new java.awt.Color(255, 255, 255));
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo palabra.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 750));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
