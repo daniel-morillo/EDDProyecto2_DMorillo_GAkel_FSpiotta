@@ -20,19 +20,23 @@ import javax.swing.plaf.ColorUIResource;
 
 /**
  * Esta interfaz corresponde a la función de agregar un resumen
+ *
  * @author Fabrizio Spiotta, Daniel Morillo, Georgina Akel
  */
 public class InterfazAgregarResumen extends javax.swing.JFrame {
-    
+
     static HashTable summaryHashTable;
     static HashTable autoresHashTable;
     static HashTable palabrasClaveHashTable;
     static Lista listaAutoresRegistrados;
+
     /**
      * Creates new form InterfazAgregarResumen
+     *
      * @param summaryHashTable Hashtable de los resúmenes
      * @param autoresHashTable Hashtable de los autores
-     * @param listaAutoresRegistrados lista de los autores registrados hasta el momento
+     * @param listaAutoresRegistrados lista de los autores registrados hasta el
+     * momento
      * @param palabrasClaveHashTable Hashtable de las palabras clave
      */
     public InterfazAgregarResumen(HashTable summaryHashTable, HashTable autoresHashTable, HashTable palabrasClaveHashTable, Lista listaAutoresRegistrados) {
@@ -48,19 +52,21 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         this.setSize(900, 760);
         this.setLocationRelativeTo(null);
     }
-    
+
     /**
      * Cambia el ícono de la interfaz
+     *
      * @return el nuevo ícono
      */
-    public Image getIconImage(){
+    public Image getIconImage() {
         Image retvalue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/cc.png"));
         return retvalue;
     }
-    
+
     /**
      * Inserta un nuevo resumen
-     * @param newSummary el resumen a sser insertado 
+     *
+     * @param newSummary el resumen a sser insertado
      * @param nombreArticulo el nombre del artículo del resumen a ser ingresado
      * @return
      */
@@ -84,13 +90,14 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
             this.summaryHashTable.insertar(newSummary.getTitulo(), newSummary);
         } else {
             JOptionPane.showMessageDialog(null, "EL resumen ya está registrado");
-            cont ++;
+            cont++;
         }
         return cont;
     }
-    
+
     /**
      * Método que inserta autores
+     *
      * @param newSummary el resumen del artículo de los autores a ser ingresados
      * @param nombreAutor nombre de los autores
      */
@@ -100,7 +107,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         Lista listaAux = autoresHashTable.getArrayHash()[hashIndex];
         if (listaAux != null) {
             encontrado = true;
-        } 
+        }
 
         if (encontrado == false) {
             autoresHashTable.insertar(nombreAutor, newSummary);
@@ -108,10 +115,12 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
             listaAux.AppendAtTheEnd(newSummary);
         }
     }
-    
+
     /**
-     * Inserta palabras clave 
-     * @param newSummary el resumen del articulo de las palabras claves ingresadas
+     * Inserta palabras clave
+     *
+     * @param newSummary el resumen del articulo de las palabras claves
+     * ingresadas
      * @param palabraCalve las palabras clave
      */
     public static void insertarPalabrasClaveHashTable(Summary newSummary, String palabraCalve) {
@@ -120,7 +129,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         Lista listaAux = palabrasClaveHashTable.getArrayHash()[hashIndex];
         if (listaAux != null) {
             encontrado = true;
-        } 
+        }
 
         if (encontrado == false) {
             palabrasClaveHashTable.insertar(palabraCalve, newSummary);
@@ -128,98 +137,103 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
             listaAux.AppendAtTheEnd(newSummary);
         }
     }
-    
+
     /**
      * Método que insertar autores dentro de una lista de autores
+     *
      * @param listaAutoresRegistrados lista de autores previa
      * @param nombreAutor nombre del autor a ser ingresado
      */
-    public  static void insertarListaAutoresregistrados(Lista listaAutoresRegistrados, String nombreAutor) {
+    public static void insertarListaAutoresregistrados(Lista listaAutoresRegistrados, String nombreAutor) {
         if (listaAutoresRegistrados.serachInList(nombreAutor.trim()) == false) {
             listaAutoresRegistrados.AppendOrdenadoStringsListaAutores(nombreAutor.trim());
         }
     }
-    
+
     /**
      * Función que carga, lee y procesa el archivo txt que el usuario selecciono
-     * 
+     *
      */
-    public void agregarResumen(){
+    public void agregarResumen() {
         JFileChooser archivo = new JFileChooser();
         archivo.showOpenDialog(archivo);
         File file = archivo.getSelectedFile();
-        if (!file.toString().contains("txt")) {
-            JOptionPane.showMessageDialog(null, "EL ARCHIVO SELECCIONADO NO ES TXT");
+        if (file == null) {
+            JOptionPane.showMessageDialog(null, "NO SE HA SELECCIONADO NINGÚN ARCHIVO");
         } else {
-            String line;
-            String texto = "";
+            if (!file.toString().contains("txt")) {
+                JOptionPane.showMessageDialog(null, "EL ARCHIVO SELECCIONADO NO ES TXT");
+            } else {
+                String line;
+                String texto = "";
 
-            try { 
-                if (!file.exists()){
-                    file.createNewFile();
-                } else {               
-                    FileReader fr = new FileReader(file);
-                    BufferedReader br = new BufferedReader(fr);
+                try {
+                    if (!file.exists()) {
+                        file.createNewFile();
+                    } else {
+                        FileReader fr = new FileReader(file);
+                        BufferedReader br = new BufferedReader(fr);
 
-                    while((line = br.readLine()) != null){
-                        if (!line.isEmpty()) {
-                            texto += line + "\n";
-                        }    
-                    }
-
-                    if (!"".equals(texto)) {
-                        String [] textoSeparadoAutores = texto.split("Autores\n");
-                        String [] nombreArticuloArray = textoSeparadoAutores[0].split("\n");
-                        String nombreArticulo = nombreArticuloArray[0];
-                        if (!nombreArticulo.contains(".")) {
-                            nombreArticulo += ".";
-                        }
-                        String [] textoSeparadoResumen = textoSeparadoAutores[1].split("Resumen\n");
-                        String [] autoresArray = textoSeparadoResumen[0].split("\n");
-                        Lista autoresList = new Lista();
-                        for (int i = 0; i < autoresArray.length; i++) {
-                            String autorCadena = autoresArray[i];
-                            if (autorCadena.contains("-")) {
-                                autorCadena = autorCadena.replaceAll("-", " ");
+                        while ((line = br.readLine()) != null) {
+                            if (!line.isEmpty()) {
+                                texto += line + "\n";
                             }
-                            autoresList.AppendAtTheEnd(autorCadena);
-                        }
-                        String [] textoSeparadoKeyWords = textoSeparadoResumen[1].split(".\n");                        
-                        String cuerpoResumen = textoSeparadoKeyWords[0] + ".";
-                        String [] textoSeparadoDosPuntos = textoSeparadoKeyWords[1].split(": ");
-                        String [] keyWordsArray = textoSeparadoDosPuntos[1].split(", ");
-                        Lista keyWordsList = new Lista();
-                        for (int i = 0; i < keyWordsArray.length; i++) {
-                            if (keyWordsArray[i].equals("C")) {
-                                keyWordsList.AppendAtTheEnd(keyWordsArray[i] + "#");
-                            } else {
-                                keyWordsList.AppendAtTheEnd(keyWordsArray[i]);
-                            }   
                         }
 
-                        Summary newSummary = new Summary(nombreArticulo, autoresList, cuerpoResumen, keyWordsList);
-                        
-                        int cont = this.insertarSummaryHashTable(newSummary, nombreArticulo);
-                        Nodo aux = autoresList.getpFirst();
-                        for (int j = 0; j < autoresList.getSize(); j++) {
-                            insertarAutoresHashTable(newSummary, (String) aux.getElemento());
-                            insertarListaAutoresregistrados(listaAutoresRegistrados, (String) aux.getElemento());
-                            aux = aux.getpNext();
+                        if (!"".equals(texto)) {
+                            String[] textoSeparadoAutores = texto.split("Autores\n");
+                            String[] nombreArticuloArray = textoSeparadoAutores[0].split("\n");
+                            String nombreArticulo = nombreArticuloArray[0];
+                            if (!nombreArticulo.contains(".")) {
+                                nombreArticulo += ".";
+                            }
+                            String[] textoSeparadoResumen = textoSeparadoAutores[1].split("Resumen\n");
+                            String[] autoresArray = textoSeparadoResumen[0].split("\n");
+                            Lista autoresList = new Lista();
+                            for (int i = 0; i < autoresArray.length; i++) {
+                                String autorCadena = autoresArray[i];
+                                if (autorCadena.contains("-")) {
+                                    autorCadena = autorCadena.replaceAll("-", " ");
+                                }
+                                autoresList.AppendAtTheEnd(autorCadena);
+                            }
+                            String[] textoSeparadoKeyWords = textoSeparadoResumen[1].split(".\n");
+                            String cuerpoResumen = textoSeparadoKeyWords[0] + ".";
+                            String[] textoSeparadoDosPuntos = textoSeparadoKeyWords[1].split(": ");
+                            String[] keyWordsArray = textoSeparadoDosPuntos[1].split(", ");
+                            Lista keyWordsList = new Lista();
+                            for (int i = 0; i < keyWordsArray.length; i++) {
+                                if (keyWordsArray[i].equals("C")) {
+                                    keyWordsList.AppendAtTheEnd(keyWordsArray[i] + "#");
+                                } else {
+                                    keyWordsList.AppendAtTheEnd(keyWordsArray[i]);
+                                }
+                            }
+
+                            Summary newSummary = new Summary(nombreArticulo, autoresList, cuerpoResumen, keyWordsList);
+
+                            int cont = this.insertarSummaryHashTable(newSummary, nombreArticulo);
+                            Nodo aux = autoresList.getpFirst();
+                            for (int j = 0; j < autoresList.getSize(); j++) {
+                                insertarAutoresHashTable(newSummary, (String) aux.getElemento());
+                                insertarListaAutoresregistrados(listaAutoresRegistrados, (String) aux.getElemento());
+                                aux = aux.getpNext();
+                            }
+                            Nodo aux1 = keyWordsList.getpFirst();
+                            for (int j = 0; j < keyWordsList.getSize(); j++) {
+                                insertarPalabrasClaveHashTable(newSummary, (String) aux1.getElemento());
+                                aux1 = aux1.getpNext();
+                            }
+
+                            if (cont == 0) {
+                                JOptionPane.showMessageDialog(null, "LECTURA COMPLETADA");
+                            }
                         }
-                        Nodo aux1 = keyWordsList.getpFirst();
-                        for (int j = 0; j < keyWordsList.getSize(); j++) {
-                            insertarPalabrasClaveHashTable(newSummary, (String) aux1.getElemento());
-                            aux1 = aux1.getpNext();
-                        }
-                        
-                        if (cont == 0) {
-                            JOptionPane.showMessageDialog(null, "LECTURA COMPLETADA");
-                        } 
+                        br.close();
                     }
-                    br.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "NO SELECCIONO NINGÚN ARCHIVO O NO SE PUDO LEER PROPORCIONADO");
                 }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "NO SELECCIONO NINGÚN ARCHIVO O NO SE PUDO LEER PROPORCIONADO");
             }
         }
     }
