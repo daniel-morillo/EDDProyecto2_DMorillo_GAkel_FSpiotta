@@ -42,8 +42,8 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
         UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
-        this.setSize(900, 700);
-        this.setSize(900, 700);
+        this.setSize(910, 760);
+//        this.setSize(900, 700);
     }
     
     /**
@@ -170,7 +170,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
 
         SeleccionTextArea.setBackground(new java.awt.Color(255, 204, 102));
         SeleccionTextArea.setColumns(20);
-        SeleccionTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 12)); // NOI18N
+        SeleccionTextArea.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         SeleccionTextArea.setForeground(new java.awt.Color(255, 255, 255));
         SeleccionTextArea.setRows(5);
         jScrollPane2.setViewportView(SeleccionTextArea);
@@ -180,12 +180,12 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("(Titulo completo como aparece en el registro)");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Escriba el nombre de la investigación ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
 
         SeleccionarInvButton.setBackground(new java.awt.Color(255, 204, 102));
         SeleccionarInvButton.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -212,7 +212,7 @@ public class InterfazAnalizarResumen extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 350, 310));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo buscar.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

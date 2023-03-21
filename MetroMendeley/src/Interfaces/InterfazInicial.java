@@ -40,7 +40,7 @@ public class InterfazInicial extends javax.swing.JFrame {
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
         UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
-        this.setSize(900, 700);
+        this.setSize(910, 760);
     }
     
     /**

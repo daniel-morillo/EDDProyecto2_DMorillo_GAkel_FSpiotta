@@ -42,7 +42,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         UI.put("OptionPane.background", new ColorUIResource(255, 153, 102));
         UI.put("Panel.background", new ColorUIResource(255, 153, 102));
         this.setLocationRelativeTo(null);
-        this.setSize(900, 687);
+        this.setSize(900, 760);
     }
 
     /**
@@ -203,7 +203,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         getContentPane().add(SalirDelSistemaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 470, 90));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo Menu.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
