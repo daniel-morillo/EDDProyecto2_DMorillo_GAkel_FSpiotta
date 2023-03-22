@@ -328,7 +328,7 @@ public class InterfazBuscarInvestigacionesPorAutor extends javax.swing.JFrame {
                 MostrarInvRelacionadasTextArea.setWrapStyleWord(true);
                 MostrarInvRelacionadasTextArea.setText(cadenaForPrint);
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna investigacion a nombre del autor proporcionado. (Asegurese de haber colocado los acentos, en caso de que el nombre del autor los tenga)");
+                JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna investigacion a nombre del autor proporcionado. (Asegurese de seleccionar correctamente un autor de la lista desplegable)");
             }
         }
     }//GEN-LAST:event_SeleccionarInvAutorButtonActionPerformed
