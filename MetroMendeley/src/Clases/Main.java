@@ -179,12 +179,11 @@ public class Main {
                                 aux1 = aux1.getpNext();
                             }
                         }
-                        JOptionPane.showMessageDialog(null, "LECTURA COMPLETADA");
                     }
                     br.close();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "NO SELECCIONO NINGUN ARCHIVO O NO SE PUDO LEER PROPORCIONADO");
+                JOptionPane.showMessageDialog(null, "NO SE PUDIERON CARGAR LOS ARCHIVOS GUARDADOS ANTERIORMENTE, DEBIDO A UN ERROR DESCONOCIDO");
             }
         }
     }

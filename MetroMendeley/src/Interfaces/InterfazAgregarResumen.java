@@ -89,7 +89,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
         if (encontrado == false) {
             this.summaryHashTable.insertar(newSummary.getTitulo(), newSummary);
         } else {
-            JOptionPane.showMessageDialog(null, "EL resumen ya está registrado");
+            JOptionPane.showMessageDialog(null, "EL RESUEMN YA ESTÁ REGISTRADO!");
             cont++;
         }
         return cont;
@@ -232,7 +232,7 @@ public class InterfazAgregarResumen extends javax.swing.JFrame {
                         br.close();
                     }
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "NO SELECCIONO NINGÚN ARCHIVO O NO SE PUDO LEER PROPORCIONADO");
+                    JOptionPane.showMessageDialog(null, "NO SE PUDO LEER EL ARCHIVO PROPORCIONADO");
                 }
             }
         }

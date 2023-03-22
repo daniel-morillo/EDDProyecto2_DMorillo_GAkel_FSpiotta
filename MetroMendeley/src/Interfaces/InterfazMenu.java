@@ -102,9 +102,9 @@ public class InterfazMenu extends javax.swing.JFrame {
             PrintWriter pw = new PrintWriter("test//resumenes_guardados.txt");
             pw.print(cadenaDeTexto);
             pw.close();
-            JOptionPane.showMessageDialog(this, "Registro completado exitosamente!");
+            JOptionPane.showMessageDialog(this, "REGISTRO COMPLETADO EXITOSAMENTE!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al importar los datos, porfavor intente de nuevo");
+            JOptionPane.showMessageDialog(this, "Error al cargar los datos, porfavor intente de nuevo");
         }   
     }
 

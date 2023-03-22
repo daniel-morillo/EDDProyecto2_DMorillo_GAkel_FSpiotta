@@ -5,11 +5,10 @@
 package EstructurasDeDatos;
 
 import Clases.Summary;
-import javax.swing.JOptionPane;
 
 /**
  * Esta classe integra la estructura de datos de una HashTable
- * @author Daniel Morillo,Fabrizio Spiotta, Georgina Akel
+ * @author Daniel Morillo, Fabrizio Spiotta, Georgina Akel
  * @param <T>
  */
 public class HashTable<T> {
@@ -205,8 +204,5 @@ public class HashTable<T> {
      */
     public void setSize(int size) {
         this.size = size;
-    }
-    
-    
-    
+    }   
 }
