@@ -157,7 +157,7 @@ public class Main {
                             String [] keyWordsArray = textoSeparadoDosPuntos[1].split(", ");
                             Lista keyWordsList = new Lista();
                             for (int j = 0; j < keyWordsArray.length; j++) {
-                                if (keyWordsArray[i].equals("C")) {
+                                if (keyWordsArray[j].equals("C")) {
                                     keyWordsList.AppendAtTheEnd(keyWordsArray[j] + "#");
                                 } else {
                                     keyWordsList.AppendAtTheEnd(keyWordsArray[j]);
